@@ -1,41 +1,25 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
-using EdTestGame.Backend;
-using Godot;
+﻿using Godot;
 
 namespace EdTestGame.Scripts.Nodes;
 
 public partial class RootNode : Node2D
 {
-    public static RootNode Instance;
-    
     [Export]
-    public MapNode map;
-    
-    [Export]
-    public TickRunnerNode tickRunner;
+    public PackedScene gameScene;
 
-    public override void _EnterTree()
+    private GameNode _currentGame;
+
+    public override void _Ready()
     {
-        if (Instance != null)
-        {
-            GD.PrintErr($"More than one instance of RootNode in scene!");
-        }
-
-        Instance = this;
-        GameManager.Create();
+        RestartGame();
     }
 
-    public void OnPlayerDied()
+    public void RestartGame()
     {
-        tickRunner.Stop();
-    }
-
-    public override void _ExitTree()
-    {
-        if (Instance == this)
-        {
-            Instance = null;
-        }
+        RemoveChild(_currentGame);
+        _currentGame?.QueueFree();
+        _currentGame = gameScene.Instantiate<GameNode>();
+        _currentGame.SetRootNode(this);
+        AddChild(_currentGame);
     }
 }

@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bos4wuapamnkr"]
+
+[ext_resource type="Script" path="res://Scripts/Nodes/GameNode.cs" id="1_rhmed"]
+[ext_resource type="Script" path="res://Scripts/Nodes/CameraNode.cs" id="2_2oy31"]
+[ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="3_n8tfp"]
+[ext_resource type="Texture2D" uid="uid://dje0f5myejr1j" path="res://icon.svg" id="4_cmp51"]
+[ext_resource type="Script" path="res://Scripts/Nodes/MapNode.cs" id="5_00a5o"]
+[ext_resource type="PackedScene" uid="uid://dhejk3rd5w83e" path="res://Scenes/Player.tscn" id="6_ec5pg"]
+[ext_resource type="Script" path="res://Scripts/Nodes/TickRunnerNode.cs" id="7_8tcpi"]
+[ext_resource type="AudioStream" uid="uid://boj2nqyge388e" path="res://Audio/23231__dj_finsletown__merk-bill-f-drum-loop1.ogg" id="8_e3uer"]
+[ext_resource type="PackedScene" uid="uid://d3cmml1f7f3td" path="res://Scenes/ui.tscn" id="9_btem5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5ac2"]
+shader = ExtResource("3_n8tfp")
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("map", "tickRunner", "scoreCounter", "restartUi")]
+script = ExtResource("1_rhmed")
+map = NodePath("map")
+tickRunner = NodePath("tick_man")
+scoreCounter = NodePath("CanvasLayer/UI/Panel/Label")
+restartUi = NodePath("CanvasLayer/UI/Panel/Button")
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(8, 8)
+zoom = Vector2(5, 5)
+script = ExtResource("2_2oy31")
+
+[node name="grid_back" type="Sprite2D" parent="camera"]
+modulate = Color(1, 1, 1, 0.388235)
+material = SubResource("ShaderMaterial_c5ac2")
+position = Vector2(-2.38419e-07, 4.76837e-07)
+scale = Vector2(9.26, 5.26)
+texture = ExtResource("4_cmp51")
+
+[node name="map" type="Node2D" parent="."]
+script = ExtResource("5_00a5o")
+creatureScene = ExtResource("6_ec5pg")
+
+[node name="tick_man" type="Node2D" parent="." node_paths=PackedStringArray("audioPlayer")]
+script = ExtResource("7_8tcpi")
+tickTime = 0.411
+leftAction = &"MoveLeft"
+rightAction = &"MoveRight"
+upAction = &"MoveUp"
+downAction = &"MoveDown"
+audioPlayer = NodePath("../audioplayer")
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_e3uer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("9_btem5")]
+
+[editable path="CanvasLayer/UI"]

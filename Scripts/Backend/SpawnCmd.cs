@@ -13,6 +13,6 @@ public static class SpawnCmd
         mapCreature.position = location;
         
         GameManager.Instance.session.map.creatures.Add(mapCreature);
-        await RootNode.Instance.map.SpawnCreature(creature, location);
+        await GameNode.Instance.map.SpawnCreature(creature, location);
     }
 }

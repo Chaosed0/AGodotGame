@@ -11,7 +11,7 @@ public class GameManager : IDisposable
     {
         if (Instance != null)
         {
-            GD.PrintErr($"More than one instance of GameSession created!");
+            GD.PrintErr($"More than one instance of GameManager created!");
             return null;
         }
 

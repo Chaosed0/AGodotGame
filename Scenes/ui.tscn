@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3cmml1f7f3td"]
+
+[ext_resource type="Script" path="res://Scripts/Nodes/ScoreCounterNode.cs" id="1_m153j"]
+[ext_resource type="Script" path="res://Scripts/Nodes/RestartUiNode.cs" id="2_n4axm"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 23.0
+offset_right = 319.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 48
+text = "0
+"
+script = ExtResource("1_m153j")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -15.5
+offset_right = 32.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+script = ExtResource("2_n4axm")

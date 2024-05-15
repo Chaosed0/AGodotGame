@@ -11,7 +11,7 @@ public partial class CameraNode : Node2D
     {
         if (_player == null)
         {
-            foreach (CreatureNode node in RootNode.Instance.map.nodes)
+            foreach (CreatureNode node in GameNode.Instance.map.nodes)
             {
                 if (node.creature.faction == Faction.Player)
                 {

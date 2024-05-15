@@ -13,7 +13,7 @@ public static class MoveCmd
 
         if (info.result == MoveCreatureResult.Success)
         {
-            await RootNode.Instance.map.MoveCreatureTo(creature, info.newLocation);
+            await GameNode.Instance.map.MoveCreatureTo(creature, info.newLocation);
         }
         else if (info.result == MoveCreatureResult.Blocked)
         {

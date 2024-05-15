@@ -17,8 +17,8 @@ public static class DamageCmd
             GameManager.Instance.session.map.RemoveCreature(target);
         }
 
-        CreatureNode sourceNode = RootNode.Instance.map.GetNodeFor(source);
-        CreatureNode targetNode = RootNode.Instance.map.GetNodeFor(target);
+        CreatureNode sourceNode = GameNode.Instance.map.GetNodeFor(source);
+        CreatureNode targetNode = GameNode.Instance.map.GetNodeFor(target);
 
         await sourceNode.DoAttack(source, targetLocation, () => OnAttackHit(targetNode));
     }
@@ -31,7 +31,11 @@ public static class DamageCmd
 
             if (targetNode.creature.faction == Faction.Player)
             {
-                RootNode.Instance.OnPlayerDied();
+                GameNode.Instance.OnPlayerDied();
+            }
+            else
+            {
+                GameNode.Instance.OnMonsterDied();
             }
         }
         else
