@@ -1,0 +1,184 @@
+# To migrate you can use the command:
+# git lfs migrate import --everything --include="*.psd,*.ico,*.webp,*.png,*.jpg,*.jpeg,*.gif,*.ai,*.tif,*.tga,*.exr,*.hdr,*.otf,*.ttf,*.woff2,*.aif,*.mp3,*.wav,*.ogg,*.mp4,*.mov,*.mkv,*.avi,*.mpeg,*.mpg,*.flv,*.3dm,*.3ds,*.blend,*.c4d,*.collada,*.dae,*.dxf,*.fbx,*.jas,*.lws,*.lxo,*.ma,*.max,*.mb,*.obj,*.dll,*.dylib,*.so,*.7z,*.br,*.gz,*.tar,*.zip,*.rar,*.pdf,*.a,*.rns,*.exe,*.pdb,*.mdb,*.skel.bytes,*.cubemap,*.unitypackage,*.nupkg,*.p7s,*.preset,*.idx,*.lighting,*.pdc,*.bank,*.spine,*.fobj,*.bc,*.jar,*.pack,*.backup,*.fspro,*.ink"
+
+# git lfs migrate import --everything --include="*.png,*.pdf,*.dll,*.zip,*.wav,*.a,*.bc,*.bank,*.so,*.exr,*.ogg,*.psd,*.fobj,*.png~,*.nupkg,*.ttf,*.pdc,*.jpg,*.blend,*.fbx,*.jar,*.p7s"
+
+###############################
+
+# Default                     #
+
+# Set default behaviour to automatically normalize line endings.
+* text=auto eol=lf
+
+# Macros                      #
+
+# Macro for all binary files that should use Git LFS.
+[attr]lfs -text filter=lfs diff=lfs merge=lfs
+
+# Git Line Endings            #
+
+# Code
+*.cs      text eol=lf diff=csharp
+*.cginc   text eol=lf
+*.shader  text eol=lf
+*.ps1     text eol=lf
+*.py      text eol=lf
+
+# Godot
+*.import text eol=lf
+*.cfg text eol=lf
+*.csproj text eol=lf
+*.sln text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.gdshader text eol=lf
+*.gd text eol=lf
+*.atlas text eol=lf
+project.godot text eol=lf
+.editorconfig text eol=lf
+*.log text eol=lf
+
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed
+# in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Force bash scripts to always use LF line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.sh text eol=lf
+
+# Force vcproj to have the correct line endings so it will work
+*.vcproj	text eol=crlf
+
+# Git Large File System (LFS) #
+
+# Images
+*.ai filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.dds filter=lfs diff=lfs merge=lfs -text
+*.exr filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.hdr filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.tif filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+
+# Fonts
+*.otf filter=lfs diff=lfs merge=lfs -text
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+
+# Audio
+*.aif filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.ogv filter=lfs diff=lfs merge=lfs -text
+*.ogx filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+
+# Video
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.flv filter=lfs diff=lfs merge=lfs -text
+*.mkv filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mpeg filter=lfs diff=lfs merge=lfs -text
+*.mpg filter=lfs diff=lfs merge=lfs -text
+
+# 3D Objects
+*.3dm filter=lfs diff=lfs merge=lfs -text
+*.3ds filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.blend1 filter=lfs diff=lfs merge=lfs -text
+*.c4d filter=lfs diff=lfs merge=lfs -text
+*.collada filter=lfs diff=lfs merge=lfs -text
+*.dae filter=lfs diff=lfs merge=lfs -text
+*.dxf filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.glb filter=lfs diff=lfs merge=lfs -text
+*.gltf filter=lfs diff=lfs merge=lfs -text
+*.jas filter=lfs diff=lfs merge=lfs -text
+*.lws filter=lfs diff=lfs merge=lfs -text
+*.lxo filter=lfs diff=lfs merge=lfs -text
+*.ma filter=lfs diff=lfs merge=lfs -text
+*.max filter=lfs diff=lfs merge=lfs -text
+*.mb filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+
+# Libraries
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.dylib filter=lfs diff=lfs merge=lfs -text
+*.so filter=lfs diff=lfs merge=lfs -text
+
+# Archives
+*.7z filter=lfs diff=lfs merge=lfs -text
+*.br filter=lfs diff=lfs merge=lfs -text
+*.gz filter=lfs diff=lfs merge=lfs -text
+*.rar filter=lfs diff=lfs merge=lfs -text
+*.tar filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+
+# Documents
+*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Other
+*.a filter=lfs diff=lfs merge=lfs -text
+*.rns filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.pdb filter=lfs diff=lfs merge=lfs -text
+*.mdb filter=lfs diff=lfs merge=lfs -text
+
+# Spine export file
+*.skel.bytes filter=lfs diff=lfs merge=lfs -text
+*.skel filter=lfs diff=lfs merge=lfs -text
+
+# Misc Binary Files
+*.nupkg filter=lfs diff=lfs merge=lfs -text
+*.snupkg filter=lfs diff=lfs merge=lfs -text
+*.p7s filter=lfs diff=lfs merge=lfs -text
+*.pdc filter=lfs diff=lfs merge=lfs -text
+*.bank filter=lfs diff=lfs merge=lfs -text
+*.spine filter=lfs diff=lfs merge=lfs -text
+*.fobj filter=lfs diff=lfs merge=lfs -text
+*.bc filter=lfs diff=lfs merge=lfs -text
+*.jar filter=lfs diff=lfs merge=lfs -text
+
+# Text Files
+*.xslt         text eol=lf
+*.yml          text eol=lf
+*.xml          text eol=lf
+*.config       text eol=lf
+*.json         text eol=lf
+*.html         text eol=lf
+*.css          text eol=lf
+*.txt          text eol=lf
+*.lock         text eol=lf
+*.TXT          text eol=lf
+*.XML          text eol=lf
+*.plist        text eol=lf
+*.jslib        text eol=lf
+*.mm           text eol=lf
+*.DotSettings  text eol=lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
+# FMOD line endings
+*.bundle text eol=lf
+*.gdap text eol=lf
+*.gdextension text eol=lf
+android/.build_version text eol=lf
+*.so.13 filter=lfs diff=lfs merge=lfs -text
+*.so.13.12 filter=lfs diff=lfs merge=lfs -text
+*.exp filter=lfs diff=lfs merge=lfs -text
+*.lib filter=lfs diff=lfs merge=lfs -text
+*.bank filter=lfs diff=lfs merge=lfs -text
+*.aar filter=lfs diff=lfs merge=lfs -text
+*.macos.template_debug filter=lfs diff=lfs merge=lfs -text
+*.macos.template_release filter=lfs diff=lfs merge=lfs -text
+libGodotFmod.macos.editor filter=lfs diff=lfs merge=lfs -text

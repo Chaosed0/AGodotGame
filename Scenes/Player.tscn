@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhejk3rd5w83e"]
+
+[ext_resource type="Script" path="res://Scripts/Nodes/CreatureNode.cs" id="1_lhi42"]
+[ext_resource type="Texture2D" uid="uid://bagt6xydqc7ra" path="res://Resources/player_tex.tres" id="2_pw3ah"]
+
+[node name="player" type="Node2D" node_paths=PackedStringArray("spriteNode")]
+script = ExtResource("1_lhi42")
+spriteNode = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pw3ah")

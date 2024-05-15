@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbs1j45edib1l"]
+
+[ext_resource type="Script" path="res://Scripts/Nodes/RootNode.cs" id="1_87yhd"]
+[ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="1_l4ps2"]
+[ext_resource type="Script" path="res://Scripts/Nodes/CameraNode.cs" id="2_h8igs"]
+[ext_resource type="Texture2D" uid="uid://dje0f5myejr1j" path="res://icon.svg" id="2_pjp8q"]
+[ext_resource type="Script" path="res://Scripts/Nodes/MapNode.cs" id="5_8l1rb"]
+[ext_resource type="PackedScene" uid="uid://dhejk3rd5w83e" path="res://Scenes/Player.tscn" id="5_nmwlh"]
+[ext_resource type="Script" path="res://Scripts/Nodes/TickRunnerNode.cs" id="6_5gmpt"]
+[ext_resource type="AudioStream" uid="uid://boj2nqyge388e" path="res://Audio/23231__dj_finsletown__merk-bill-f-drum-loop1.ogg" id="8_gigwh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5ac2"]
+shader = ExtResource("1_l4ps2")
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("map", "tickRunner")]
+texture_filter = 1
+script = ExtResource("1_87yhd")
+map = NodePath("map")
+tickRunner = NodePath("tick_man")
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(8, 8)
+zoom = Vector2(5, 5)
+script = ExtResource("2_h8igs")
+
+[node name="grid_back" type="Sprite2D" parent="camera"]
+modulate = Color(1, 1, 1, 0.388235)
+material = SubResource("ShaderMaterial_c5ac2")
+position = Vector2(-2.38419e-07, 4.76837e-07)
+scale = Vector2(9.26, 5.26)
+texture = ExtResource("2_pjp8q")
+
+[node name="map" type="Node2D" parent="."]
+script = ExtResource("5_8l1rb")
+creatureScene = ExtResource("5_nmwlh")
+
+[node name="tick_man" type="Node2D" parent="." node_paths=PackedStringArray("audioPlayer")]
+script = ExtResource("6_5gmpt")
+tickTime = 0.411
+leftAction = &"MoveLeft"
+rightAction = &"MoveRight"
+upAction = &"MoveUp"
+downAction = &"MoveDown"
+audioPlayer = NodePath("../audioplayer")
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gigwh")
